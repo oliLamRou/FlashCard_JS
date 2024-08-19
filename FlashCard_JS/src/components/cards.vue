@@ -1,30 +1,28 @@
 <script setup>
-	import card from '@/components/card.vue'
+  import {ref, reactive, onMounted } from 'vue';
+  import card from '@/components/card.vue'
+  import { useCards } from '@/stores/cards'
+
+  const store = useCards()
+
 </script>
 
 <template>
-	<div class="container-fluid">
-		<div class="card-wrapper">
-			<div class="col">
-				<div class="row">
-					<card/>
-				</div>			
-				<div class="row">
-					<button type="button" class="btn btn-danger">Bad</button>				
-				</div>
-				<div class="row">	
-					<button type="button" class="btn btn-success">Good</button>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="col">
+    <div class="row">
+      <card :card="store.cards"/>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <div class="d-grid">
+          <button type="button" class="btn btn-danger btn-lg">Bad</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-grid gap-1">
+          <button type="button" class="btn btn-success btn-lg">Good</button>
+        </div>
+      </div>
+    </div>    
+  </div>
 </template>
-
-<style>
-	.card-wrapper {
-		max-width: 500px;
-		display: flex;
-		justify-content: center;
-		margin: 0 auto;
-	}
-</style>
