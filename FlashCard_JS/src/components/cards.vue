@@ -4,29 +4,60 @@
   import { useCards } from '@/stores/cards'
 
   const store = useCards()
-  const answer = false
+  const show_answer = ref(false)
+
+  onMounted( async () => {
+    await store.load()
+  })
+
+  const answer = () => {
+    show_answer.value = !show_answer.value
+  }
+
+  const bad_answer = () => {
+    show_answer.value = false
+    store.bad_answer()
+  }  
+
+  const good_answer = () => {
+    show_answer.value = false
+    store.good_answer()
+  }
 
 </script>
 
 <template>
-  <div class="col">
+  <h1>{{store.category}}</h1>
+  <div class="col" v-if="store.category">
     <div class="row">
-      <card :card="store.cards"/>
+      <card :card="store.cards[0]" :answer="show_answer"/>
     </div>
-    <div class="row mt-3" v-if="answer">
+    <div class="row mt-3" v-show="!show_answer">
       <div class="d-grid">
-          <button type="button" class="btn btn-outline-primary btn-lg">Show Answer</button>
+          <button 
+            type="button" 
+            class="btn btn-outline-primary btn-lg"
+            @click="answer"
+          >Show Answer</button>
       </div>
     </div>
-    <div class="row mt-3" v-if="!answer">
+    <div class="row mt-3" v-show="show_answer">
       <div class="col-md-6">
         <div class="d-grid">
-          <button type="button" class="btn btn-outline-danger btn-lg">Bad</button>
+          <button 
+            type="button" 
+            class="btn btn-outline-danger btn-lg"
+            @click="bad_answer"
+          >Bad</button>
         </div>
       </div>
       <div class="col-md-6">
         <div class="d-grid gap-1">
-          <button type="button" class="btn btn-outline-success btn-lg">Good</button>
+          <button 
+            type="button" 
+            class="btn btn-outline-success btn-lg"
+            @click="good_answer"
+          >Good</button>
         </div>
       </div>
     </div>    
