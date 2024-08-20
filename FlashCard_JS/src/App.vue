@@ -5,12 +5,12 @@
 
 <template>
   <div class="app-container">
-    <aside class="sidebar">
-      <side_menu/>
-    </aside>
-    <main class="main-content">
-      <cards class="p-5"/>
-    </main>
+    <div class="col-md-4 sidebar">
+      <side_menu/>    
+    </div>
+    <div class="col-md-8 main-content p-5">
+      <cards/>    
+    </div>    
   </div>
 </template>
 
@@ -21,18 +21,10 @@
 }
 
 .sidebar {
-  width: 400px;
-  background-color: #2c3e50; /* Example sidebar background */
-  color: white;
-  padding: 20px;
-  box-sizing: border-box;
+  background-color: #2c3e50;
 }
 
 .main-content {
-	width: 100%;
-  background-color: #ecf0f1; /* Example main content background */
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto; /* Adds scrolling if content overflows */
+  background-color: #ecf0f1; 
 }
 </style>

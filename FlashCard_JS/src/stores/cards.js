@@ -10,4 +10,11 @@ export const useCards = defineStore('pairForm',{
       url: ''
     }
   }),
+  actions:{
+    async load() {
+      try {
+        const responce = true
+      }
+    }
+  },
 })
