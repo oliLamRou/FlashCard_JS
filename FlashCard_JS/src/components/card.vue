@@ -1,25 +1,15 @@
 <script setup>
-  import {ref, reactive, onMounted } from 'vue';
+  import {ref, reactive, onMounted, watch } from 'vue';
 
   const props = defineProps({
-    card: Object,
-    require: true
+      card: {
+        type: Object,
+        require: true
+      },
+      answer: {
+        type: Boolean,
+      }
   })
-
-  // const word = reactive({
-  //   word: "placeholder",
-  //   answer: "answer",
-  //   last: "2024/01/01"
-  // })
-
-  // var API_KEY = '45426294-13da5b0d5a5784f39d76e7197';
-  // var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('red roses');
-  // $.getJSON(URL, function(data){
-  // if (parseInt(data.totalHits) > 0)
-  //     $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
-  // else
-  //     console.log('No hits');
-  // });
 
 </script>
 <template>
@@ -31,7 +21,7 @@
       <div class="col-md-7">
         <div class="card-body">
           <h3 class="card-title">{{props.card.question}}</h3>
-            <h3 class="card-text">
+            <h3 class="card-text" v-show="props.answer">
               <b>{{props.card.answer}}</b>
             </h3>
           <p class="card-text"><small class="text-muted">Last try: {{props.card.last}}</small></p>

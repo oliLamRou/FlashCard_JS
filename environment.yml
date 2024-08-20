@@ -1,0 +1,11 @@
+name: flash_card
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas
+  - sqlite
+  - python=3.11
+  - flask
+  - werkzeug=2.2.2
+  - flask-cors

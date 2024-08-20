@@ -4,13 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "backend": "conda run -n flash_card python ./backend/backend.py",
+    "frontend": "vite",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.7.4",
     "bootstrap": "^5.3.3",
+    "concurrently": "^8.2.2",
     "pinia": "^2.2.2",
     "vue": "^3.4.29"
   },
