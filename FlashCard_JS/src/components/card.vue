@@ -23,15 +23,20 @@
 
 </script>
 <template>
-  <div class="card">
-    <div class="card-header">
-      <h3>Category</h3>
+  <div class="card mb-2">
+    <div class="row g-0">
+      <div class="col-md-5 p-1">
+        <img src="https://picsum.photos/200/200?random=1" class="card-img-top" alt="...">
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <h3 class="card-title">{{props.card.question}}</h3>
+            <h3 class="card-text">
+              <b>{{props.card.answer}}</b>
+            </h3>
+          <p class="card-text"><small class="text-muted">Last try: {{props.card.last}}</small></p>
+        </div>
+      </div>
     </div>
-    <img src="https://picsum.photos/200/200?random=1" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{props.card.question}}</h5>
-      <p class="card-text">{{props.card.answer}}</p>
-      <p class="card-text"><small class="text-muted">Last try: {{props.card.last}}</small></p>
-    </div>  
-  </div>
+  </div>  
 </template>

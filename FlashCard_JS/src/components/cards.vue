@@ -4,6 +4,7 @@
   import { useCards } from '@/stores/cards'
 
   const store = useCards()
+  const answer = false
 
 </script>
 
@@ -12,15 +13,20 @@
     <div class="row">
       <card :card="store.cards"/>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-3" v-if="answer">
+      <div class="d-grid">
+          <button type="button" class="btn btn-outline-primary btn-lg">Show Answer</button>
+      </div>
+    </div>
+    <div class="row mt-3" v-if="!answer">
       <div class="col-md-6">
         <div class="d-grid">
-          <button type="button" class="btn btn-danger btn-lg">Bad</button>
+          <button type="button" class="btn btn-outline-danger btn-lg">Bad</button>
         </div>
       </div>
       <div class="col-md-6">
         <div class="d-grid gap-1">
-          <button type="button" class="btn btn-success btn-lg">Good</button>
+          <button type="button" class="btn btn-outline-success btn-lg">Good</button>
         </div>
       </div>
     </div>    
