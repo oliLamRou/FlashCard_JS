@@ -11,7 +11,7 @@
   })
 
   const answer = () => {
-    show_answer.value = !show_answer.value
+    show_answer.value = true
   }
 
   const bad_answer = () => {
@@ -30,7 +30,7 @@
   <h1>{{store.category}}</h1>
   <div class="col" v-if="store.category">
     <div class="row">
-      <card :card="store.cards[0]" :answer="show_answer"/>
+      <card :card="store.card" :answer="show_answer"/>
     </div>
     <div class="row mt-3" v-show="!show_answer">
       <div class="d-grid">
