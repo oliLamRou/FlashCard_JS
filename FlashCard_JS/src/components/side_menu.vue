@@ -1,7 +1,7 @@
 <script setup>
   import { ref, watch } from 'vue'
-  import { useCards } from '@/stores/cards'
-  const store = useCards()
+  import { useDeck } from '@/stores/deck'
+  const store = useDeck()
   const choice = ref()
   
   watch(choice, (newChoice) => {
