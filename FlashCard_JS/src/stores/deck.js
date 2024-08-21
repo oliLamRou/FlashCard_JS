@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from 'axios'
 
-export const useCards = defineStore('pairForm',{
+export const useDeck = defineStore('storeDeck',{
   state:() => ({
     deck: [],
     category: null,
@@ -21,12 +21,23 @@ export const useCards = defineStore('pairForm',{
   actions:{
     async load() {
       try {
-        const responce = await axios.get('http://localhost:5003/get_words')
+        const responce = await axios.get('http://localhost:5003/load_deck')
         this.deck = responce.data
       }
       catch(error) {
         console.log(error)
       }
+    },
+    async add() {
+      try {
+        const responce = await axios.post('http://localhost:5003/add_card', {
+          card: this.card
+        });
+        console.log(responce.data)
+        this.deck = responce.data
+      } catch(error) {
+        console.log(error)
+      }      
     },
     draw_card() {
       this.current =  Math.floor(Math.random() * this.cards.length)
@@ -37,9 +48,19 @@ export const useCards = defineStore('pairForm',{
     },
     bad_answer(newCategory) {
       this.draw_card()
+      this.add()
     },
     good_answer(newCategory) {
       this.draw_card()
     }
   },
+  persist: {
+    enabled: true,
+    strategies: [
+      {
+        key: 'user',
+        storage: localStorage,
+      },
+    ],
+  },  
 })

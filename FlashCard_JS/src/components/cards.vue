@@ -1,9 +1,9 @@
 <script setup>
   import {ref, reactive, onMounted } from 'vue';
   import card from '@/components/card.vue'
-  import { useCards } from '@/stores/cards'
+  import { useDeck } from '@/stores/deck'
 
-  const store = useCards()
+  const store = useDeck()
   const show_answer = ref(false)
 
   onMounted( async () => {
