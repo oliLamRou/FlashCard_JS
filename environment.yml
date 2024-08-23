@@ -9,3 +9,4 @@ dependencies:
   - flask
   - werkzeug=2.2.2
   - flask-cors
+  - requests

@@ -1,6 +1,8 @@
 <script setup>
   import { ref, watch } from 'vue'
   import { useDeck } from '@/stores/deck'
+  import router from '@/router'
+
   const store = useDeck()
   const choice = ref()
   
@@ -8,14 +10,14 @@
     store.update_category(newChoice)
   })
 
+  const generate = () => {
+    router.push('/generate')
+  }
+
 </script>
 
 <template>
   <div class="p-2 d-grid">
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="inputGroup-sizing-sm">Categories</span>
-      <button class="btn btn-primary" type="button" id="button-addon1">+</button>
-    </div>    
     <div 
       class="btn-group-vertical" 
       role="group" 
@@ -33,11 +35,14 @@
 
       >
       <label 
-        class="btn btn-outline-primary btn-lg" 
+        class="btn btn-secondary btn-lg" 
         :for="'btnradio' + index"
       >
         {{ category }}
       </label>
     </div>
+    <div class="input-group mt-3">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon1" @click="generate">+</button>
+    </div>        
   </div>
 </template>

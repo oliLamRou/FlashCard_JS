@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import home from '@/components/home.vue'
-import add_cards from '@/components/add_cards.vue'
+import generate from '@/components/generate.vue'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes:[
 		{name: 'Home', path:'/', component:home},
-		{name: 'New', path:'/new', component:add_cards},
+		{name: 'Generate', path:'/generate', component:generate},
 	],
 	linkActiveClass:'active'
 });
