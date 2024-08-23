@@ -7,7 +7,7 @@
   const choice = ref()
   
   watch(choice, (newChoice) => {
-    store.update_category(newChoice)
+    store.update_topic(newChoice)
   })
 
   const generate = () => {
@@ -22,7 +22,7 @@
       class="btn-group-vertical" 
       role="group" 
       aria-label="Basic radio toggle button group"
-      v-for="(category, index) in store.categories"
+      v-for="(topic, index) in store.topics"
     >
       <input
         type="radio" 
@@ -30,7 +30,7 @@
         name="btnradio" 
         :id="'btnradio' + index"
         autocomplete="off"
-        :value="category"
+        :value="topic"
         v-model="choice"
 
       >
@@ -38,7 +38,7 @@
         class="btn btn-secondary btn-lg" 
         :for="'btnradio' + index"
       >
-        {{ category }}
+        {{ topic }}
       </label>
     </div>
     <div class="input-group mt-3">

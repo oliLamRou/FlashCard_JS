@@ -4,15 +4,15 @@ import axios from 'axios'
 export const useDeck = defineStore('storeDeck',{
   state:() => ({
     deck: [],
-    category: null,
+    topic: null,
     current: 0
   }),
   getters: {
-    categories() {
-      return new Set(this.deck.map(item => item.category))
+    topics() {
+      return new Set(this.deck.map(item => item.topic))
     },
     cards() {
-      return this.deck.filter(card => card.category === this.category)
+      return this.deck.filter(card => card.topic === this.topic)
     },
     card() {
       return this.cards[this.current]
@@ -53,15 +53,15 @@ export const useDeck = defineStore('storeDeck',{
     draw_card() {
       this.current =  Math.floor(Math.random() * this.cards.length)
     },    
-    update_category(newCategory) {
-      this.category = newCategory
+    update_topic(newTopic) {
+      this.topic = newTopic
       this.draw_card()
     },
-    bad_answer(newCategory) {
+    bad_answer(newTopic) {
       this.draw_card()
       this.add()
     },
-    good_answer(newCategory) {
+    good_answer(newTopic) {
       this.draw_card()
     }
   },
