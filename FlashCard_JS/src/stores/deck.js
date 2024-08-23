@@ -39,6 +39,17 @@ export const useDeck = defineStore('storeDeck',{
         console.log(error)
       }      
     },
+    async generate(userInput) {
+      try {
+        const responce = await axios.post('http://localhost:5003/generate', {
+          userInput: userInput
+        });
+        console.log(responce.data)
+        this.deck = responce.data
+      } catch(error) {
+        console.log(error)
+      }      
+    },    
     draw_card() {
       this.current =  Math.floor(Math.random() * this.cards.length)
     },    
