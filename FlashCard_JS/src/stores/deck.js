@@ -59,7 +59,6 @@ export const useDeck = defineStore('storeDeck',{
     },
     bad_answer(newTopic) {
       this.draw_card()
-      this.add()
     },
     good_answer(newTopic) {
       this.draw_card()

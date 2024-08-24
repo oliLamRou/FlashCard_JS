@@ -17,6 +17,7 @@
 </script>
 
 <template>
+  <h1>Topics</h1>
   <div class="p-2 d-grid">
     <div 
       class="btn-group-vertical" 
@@ -35,7 +36,7 @@
 
       >
       <label 
-        class="btn btn-secondary btn-lg" 
+        class="btn btn-secondary btn-lg clean_text" 
         :for="'btnradio' + index"
       >
         {{ topic }}
