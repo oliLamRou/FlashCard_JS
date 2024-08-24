@@ -41,9 +41,9 @@ def generate():
 	response = data.json().get('response')
 	new_cards = pd.DataFrame(ast.literal_eval(response))
 	new_cards = new_cards.rename(columns={languageA: 'question', languageB: 'answer'})
-	new_cards[['category', 'last', 'image']] = [topic, '2024-01-01', '']
+	new_cards[['topic', 'last', 'image']] = [topic, '2024-01-01', '']
 	updatedDeck = pd.concat([deck(), new_cards])
-	updatedDeck = updatedDeck[~updatedDeck[['category', 'question', 'answer']].duplicated()].reset_index(drop=True)
+	updatedDeck = updatedDeck[~updatedDeck[['topic', 'question', 'answer']].duplicated()].reset_index(drop=True)
 	updatedDeck.to_csv(DB, index=False)
 
 	return deck().to_json(orient='records')

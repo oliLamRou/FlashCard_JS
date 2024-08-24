@@ -28,7 +28,7 @@
 
 <template>
   <h1>{{store.category}}</h1>
-  <div class="col" v-if="store.category">
+  <div class="col" v-if="store.topic">
     <div class="row">
       <card :card="store.card" :answer="show_answer"/>
     </div>
