@@ -21,31 +21,19 @@ export const useDeck = defineStore('storeDeck',{
   actions:{
     async load() {
       try {
-        const responce = await axios.get('http://localhost:5003/load_deck')
-        this.deck = responce.data
+        const response = await axios.get('http://localhost:5003/')
+        this.deck = JSON.parse(response.data)
       }
       catch(error) {
         console.log(error)
       }
     },
-    async add() {
-      try {
-        const responce = await axios.post('http://localhost:5003/add_card', {
-          card: this.card
-        });
-        console.log(responce.data)
-        this.deck = responce.data
-      } catch(error) {
-        console.log(error)
-      }      
-    },
     async generate(userInput) {
       try {
-        const responce = await axios.post('http://localhost:5003/generate', {
+        const response = await axios.post('http://localhost:5003/generate', {
           userInput: userInput
         });
-        console.log(responce.data)
-        this.deck = responce.data
+        this.deck = JSON.parse(response.data)
       } catch(error) {
         console.log(error)
       }      

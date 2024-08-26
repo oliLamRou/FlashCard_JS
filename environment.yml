@@ -4,9 +4,10 @@ channels:
   - defaults
 dependencies:
   - pandas
-  - sqlite
   - python=3.11
   - flask
-  - werkzeug=2.2.2
   - flask-cors
+  - flask-restful
+  - werkzeug=2.2.2
   - requests
+  - sqlalchemy
