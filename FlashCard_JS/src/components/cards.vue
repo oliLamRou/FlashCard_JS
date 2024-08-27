@@ -1,14 +1,10 @@
 <script setup>
-  import {ref, reactive, onMounted } from 'vue';
+  import { ref } from 'vue'
   import card from '@/components/card.vue'
   import { useDeck } from '@/stores/deck'
 
   const store = useDeck()
   const show_answer = ref(false)
-
-  onMounted( async () => {
-    await store.load()
-  })
 
   const answer = () => {
     show_answer.value = true
@@ -28,7 +24,7 @@
 
 <template>
   <h1>{{store.category}}</h1>
-  <div class="col" v-if="store.topic">
+  <div class="col">
     <div class="row">
       <card :card="store.card" :answer="show_answer"/>
     </div>
