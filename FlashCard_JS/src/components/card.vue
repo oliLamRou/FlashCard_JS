@@ -21,6 +21,7 @@
       <div class="col-md-7">
         <div class="card-body">
           <h3 class="card-title clean_text">{{props.card.question}}</h3>
+          <h3 class="card-title clean_text">{{props.card.score}}</h3>
           <h3 class="card-text clean_text" v-show="props.answer">
             <b>{{props.card.answer}}</b>
           </h3>
