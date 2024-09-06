@@ -1,6 +1,3 @@
-// import "bootstrap/dist/css/bootstrap.min.css"
-// import "bootstrap"
-
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'

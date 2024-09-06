@@ -13,28 +13,13 @@
 </script>
 
 <template>
-  <div class="app-container">
-    <div class="col-md-4 sidebar">
-      <side_menu/>
-    </div>
-    <div class="col-md-8 main-content p-5" v-if="store.topic">
-      <cards v-if="store.stack.length > 0"/>
-      <score v-else/>
-    </div>
-  </div>
+  <v-app>
+    <v-navigation-drawer :width="322">
+      <v-list-item title="My Application" subtitle="Vuetify"></v-list-item>
+      <v-divider></v-divider>
+      <v-list-item link title="List Item 1"></v-list-item>
+      <v-list-item link title="List Item 2"></v-list-item>
+      <v-list-item link title="List Item 3"></v-list-item>
+    </v-navigation-drawer>
+  </v-app>
 </template>
-
-<style scoped>
-.app-container {
-  display: flex;
-  height: 100vh; /* Full viewport height */
-}
-
-.sidebar {
-  background-color: #2c3e50;
-}
-
-.main-content {
-  background-color: #ecf0f1; 
-}
-</style>

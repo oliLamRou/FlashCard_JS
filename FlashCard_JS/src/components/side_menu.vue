@@ -17,33 +17,11 @@
 </script>
 
 <template>
-  <h1>Topics</h1>
-  <div class="p-2 d-grid">
-    <div 
-      class="btn-group-vertical" 
-      role="group" 
-      aria-label="Basic radio toggle button group"
-      v-for="(topic, index) in store.topics"
-    >
-      <input
-        type="radio" 
-        class="btn-check" 
-        name="btnradio" 
-        :id="'btnradio' + index"
-        autocomplete="off"
-        :value="topic"
-        v-model="choice"
-
-      >
-      <label 
-        class="btn btn-secondary btn-lg clean_text" 
-        :for="'btnradio' + index"
-      >
-        {{ topic }}
-      </label>
-    </div>
-    <div class="input-group mt-3">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon1" @click="generate">+</button>
-    </div>        
-  </div>
+  <v-navigation-drawer :width="322">
+    <v-list-item title="My Application" subtitle="Vuetify"></v-list-item>
+    <v-divider></v-divider>
+    <v-list-item link title="List Item 1"></v-list-item>
+    <v-list-item link title="List Item 2"></v-list-item>
+    <v-list-item link title="List Item 3"></v-list-item>
+  </v-navigation-drawer>
 </template>
