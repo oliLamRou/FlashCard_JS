@@ -1,76 +1,67 @@
 <template>
   <v-app id="inspire">
-    <v-system-bar>
-      <v-spacer></v-spacer>
-
-      <v-icon>mdi-square</v-icon>
-
-      <v-icon>mdi-circle</v-icon>
-
-      <v-icon>mdi-triangle</v-icon>
-    </v-system-bar>
-
-    <v-navigation-drawer v-model="drawer">
-      <v-sheet
-        class="pa-4"
-        color="grey-lighten-4"
-      >
+    <v-app-bar flat>
+      <v-container class="mx-auto d-flex align-center justify-center">
         <v-avatar
-          class="mb-4"
+          class="me-4 "
           color="grey-darken-1"
-          size="64"
+          size="32"
         ></v-avatar>
 
-        <div>john@google.com</div>
-      </v-sheet>
+        <v-btn
+          v-for="link in links"
+          :key="link"
+          :text="link"
+          variant="text"
+        ></v-btn>
 
-      <v-divider></v-divider>
+        <v-spacer></v-spacer>
 
-      <v-list>
-        <v-list-item
-          v-for="[icon, text] in links"
-          :key="icon"
-          :prepend-icon="icon"
-          :title="text"
-          link
-        ></v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+        <v-responsive max-width="160">
+          <v-text-field
+            density="compact"
+            label="Search"
+            rounded="lg"
+            variant="solo-filled"
+            flat
+            hide-details
+            single-line
+          ></v-text-field>
+        </v-responsive>
+      </v-container>
+    </v-app-bar>
 
-    <v-main>
-      <v-container
-        class="py-8 px-6"
-        fluid
-      >
+    <v-main class="bg-grey-lighten-3">
+      <v-container>
         <v-row>
-          <v-col
-            v-for="card in cards"
-            :key="card"
-            cols="12"
-          >
-            <v-card>
-              <v-list lines="two">
-                <v-list-subheader :title="card"></v-list-subheader>
+          <v-col cols="2">
+            <v-sheet rounded="lg">
+              <v-list rounded="lg">
+                <v-list-item
+                  v-for="n in 5"
+                  :key="n"
+                  :title="`List Item ${n}`"
+                  link
+                ></v-list-item>
 
-                <template v-for="n in 6" :key="n">
-                  <v-list-item>
-                    <template v-slot:prepend>
-                      <v-avatar color="grey-darken-1"></v-avatar>
-                    </template>
+                <v-divider class="my-2"></v-divider>
 
-                    <v-list-item-title :title="`Message ${n}`"></v-list-item-title>
-
-                    <v-list-item-subtitle title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique"></v-list-item-subtitle>
-                  </v-list-item>
-
-                  <v-divider
-                    v-if="n !== 6"
-                    :key="`divider-${n}`"
-                    inset
-                  ></v-divider>
-                </template>
+                <v-list-item
+                  color="grey-lighten-4"
+                  title="Refresh"
+                  link
+                ></v-list-item>
               </v-list>
-            </v-card>
+            </v-sheet>
+          </v-col>
+
+          <v-col>
+            <v-sheet
+              min-height="70vh"
+              rounded="lg"
+            >
+              <!--  -->
+            </v-sheet>
           </v-col>
         </v-row>
       </v-container>
@@ -79,29 +70,22 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-
-  const cards = ['Today', 'Yesterday']
   const links = [
-    ['mdi-inbox-arrow-down', 'Inbox'],
-    ['mdi-send', 'Send'],
-    ['mdi-delete', 'Trash'],
-    ['mdi-alert-octagon', 'Spam'],
+    'Dashboard',
+    'Messages',
+    'Profile',
+    'Updates',
   ]
-
-  const drawer = ref(null)
 </script>
 
 <script>
   export default {
     data: () => ({
-      cards: ['Today', 'Yesterday'],
-      drawer: null,
       links: [
-        ['mdi-inbox-arrow-down', 'Inbox'],
-        ['mdi-send', 'Send'],
-        ['mdi-delete', 'Trash'],
-        ['mdi-alert-octagon', 'Spam'],
+        'Dashboard',
+        'Messages',
+        'Profile',
+        'Updates',
       ],
     }),
   }
